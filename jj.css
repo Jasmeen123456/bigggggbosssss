@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap');
+
+/* Login page */
+
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: sans-serif;
+  background: url(https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg?w=996&t=st=1684769292~exp=1684769892~hmac=42b2779e5018ef98a89853419593727e9b2abb86c44e8d94da13232ba303c7c3);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: whitesmoke;
+}
+
+
+h1 {
+  margin:0%;
+  display: flex;
+  justify-content: center;
+  background-color: #e82a2a;
+  color: white;
+  font-size: 50px;
+  padding: 10px;
+  font-family: 'Bruno Ace', cursive;
+}
+
+h3 {
+  font-size: 30px;
+  color: white;
+  margin-left: 15px;
+  border-radius: 20px;
+}
+
+.field {
+  position: absolute;
+  right: 50px;
+  height: 83%;
+  width: 35rem;
+  margin-top: 1%;
+  border-radius: 20px;
+  color: whitesmoke;
+  border: 5px solid whitesmoke;
+  padding: 20px;
+  backdrop-filter: blur(1px);
+}
+
+label {
+  color: white;
+  font-size: 15px;font-size: 15px;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 15px 18px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 5px;
+  margin: 5px 25px;
+  width: 40%;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.headingsContainer {
+  text-align: center;
+}
+
+.headingsContainer p {
+  color: white;
+}
+
+.mainContainer {
+  padding: 16px;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subcontainer a {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.register {
+  color: white;
+  text-align: center;
+}
+
+.register a {
+  color: rgb(0, 0, 0);
+}
+.register a:hover {
+  color: blue;
+  font-size: 20px;
+}
+
+.register a:link {
+  text-decoration: none;
+}
+
+
+h2 {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  color: white;
+}
+
+.png img
+{
+  position: absolute;
+  top: 30%;
+  left: 18%;
+  height: 15rem;
+}
+
+.detail {
+  position: absolute;
+  top: 60%;
+  left: 50px;
+  text-align: center;
+  width: 45rem;
+  font-size: 20px;
+  color: whitesmoke;
+  border-radius: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #e82a2a;
+  margin-top: 43rem;
+}
+
+footer p{
+  font-size: 20px;
+}

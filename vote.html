@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voting Zone</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+style
+<body>
+  <nav>
+    <ul>
+      <li><a href="/after-login/After-login.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="list.html">Contestant List</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="result.html">Results</a></li>
+
+      <li id="emailPlaceholder"></li>
+      <li><a href="/index.html" class="log">logout!</a></li>
+    </ul>
+  </nav>
+
+  <h1>Bigg Boss Voting Zone</h1>
+  <h2 class="head">GRAND FINALE VOTING</h2>
+  <div class="container">
+    <div class="card">
+      <img src="https://www.aajtknews.com/wp-content/uploads/2023/06/1223785-manisha-rani-bb-ott2.jpg" alt="Manisha Rani">
+      <details>
+        <summary>
+          <h2>Manisha Rani</h2>
+        </summary>
+        <p>Manisha Rani is an Indian actor who works in Hindi television. She started her career as a dancer in
+           events and has since acted in various inaugrations.</p>
+      </details>
+      <button class="vote-btn" id="cont-1">Vote</button>
+      <div class="progress-bar">
+        <div id="cont-1-progress" class="progress"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/Fe24ML3aMAE5Eqw.jpg" alt="Mc Stan">
+      <details>
+        <summary>
+          <h2>Mc Stan</h2>
+        </summary>
+        <p>MC Stan is a well-known rapper who has dominated the Internet with his incredible rhymes. His tunes are
+          really popular. </p>
+      </details>
+      <button class="vote-btn" id="cont-2">Vote</button>
+      <div class="progress-bar">
+        <div id="cont-2-progress" class="progress"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/FjSWxB_WQAAL2rx.jpg:large" alt="Shiv Thakare">
+      <details>
+        <summary>
+          <h2>Shiv Thakare</h2>
+        </summary>
+        <p>Shiv Thakare is an Indian television personality known for participating in reality shows like MTV Roadies
+          Rising, Bigg Boss Marathi 2 and Bigg Boss 16.</p>
+      </details>
+      <button class="vote-btn" id="cont-3">Vote</button>
+      <div class="progress-bar">
+        <div id="cont-3-progress" class="progress"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/FkkhY4tXEAAWHR7.jpg" alt="Priyanka Choudhary">
+      <details>
+        <summary>
+          <h2>Priyanka Choudhary</h2>
+        </summary>
+        <p>Priyanka Chahar Choudhary, a popular actress on television who rose to fame with her performance as Tejo in
+          the show 'Udaariyaan',</p>
+      </details>
+      <button class="vote-btn" id="cont-4">Vote</button>
+      <div class="progress-bar">
+        <div id="cont-4-progress" class="progress"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pbs.twimg.com/media/FlDKlmqWYAAF2Ni.jpg:large" alt="Archana Gautam">
+      <details>
+        <summary>
+          <h2>Archana Gautam</h2>
+        </summary>
+        <p>Archana Gautam is an Indian politician, actress, model and beauty pageant title holder, who won Miss Bikini
+          India 2018, represented India at Miss Cosmos World 2018.</p>
+      </details>
+      <button class="vote-btn" id="cont-5">Vote</button>
+      <div class="progress-bar">
+        <div id="cont-5-progress" class="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer">
+      <p>copyright &copy; <a href="#">Bigg Boss Voting Zone</a></p>
+    </div>
+  </footer>
+
+  <script>
+    
+    let total=0;
+      var email = JSON.parse(localStorage.getItem('email'));
+      console.log(email)
+      var emailPlaceholder = document.getElementById('emailPlaceholder');
+      emailPlaceholder.textContent = email;
+
+      let formData = JSON.parse(localStorage.getItem("formData")) || [];
+      let voteData = JSON.parse(localStorage.getItem("voteData")) || [{id:"cont-1",votes:0}, {id:"cont-2",votes:0}, {id:"cont-3",votes:0}, {id:"cont-4",votes:0},{id:"cont-5",votes:0}];
+      let totalVotes = JSON.parse(localStorage.getItem("totalVotes")) || 0;
+
+      console.log(voteData)
+      function isUserVoted(mail)
+      {
+          let ans = false;
+          for(user of formData)
+          {
+            if(user.email==email)  return ans = user.voted;
+          }
+          return ans;
+      }
+
+      function disableVoteButtons()
+      {
+      for (btn of voteBtns) {
+          btn.style.cursor = "not-allowed";
+        }
+      }
+
+      function markUserVoted()
+      {
+        for(user of formData)
+        if(user.email==email)
+        {
+            user.voted=true;
+        }
+      }
+
+      let voteBtns = document.querySelectorAll(".vote-btn")
+
+
+      if(isUserVoted(email))
+      {
+           for(obj of formData)
+           {
+            if(obj.email==email)
+            {
+                let user = document.getElementById(obj.votedTo)
+                user.nextElementSibling.children[0].style.width="100%"
+            }
+           }
+           disableVoteButtons();
+      }
+      else
+      {
+
+      for(let btn of voteBtns)
+      {
+        btn.addEventListener("click",handleClick)
+      }
+
+      function handleClick(e)
+      {
+        e.target.nextElementSibling.children[0].style.width="100%"
+
+        for(let obj of formData)
+        if(obj.email==email) obj.votedTo = e.target.id
+
+        for(let celeb of voteData)
+        if(celeb.id==e.target.id) celeb["votes"]++;
+        totalVotes++;
+
+        disableVoteButtons();
+        markUserVoted();
+
+        localStorage.setItem("voteData",JSON.stringify(voteData))
+        localStorage.setItem("formData",JSON.stringify(formData))
+        localStorage.setItem("totalVotes",JSON.stringify(totalVotes))
+
+        for(let btn of voteBtns)
+        btn.removeEventListener("click",handleClick)
+
+        console.log(totalVotes)
+        console.log(voteData);
+      }
+    }
+  </script>
+</body>
+
+</html>
